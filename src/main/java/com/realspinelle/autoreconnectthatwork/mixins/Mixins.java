@@ -1,0 +1,27 @@
+package com.realspinelle.autoreconnectthatwork.mixins;
+
+import javax.annotation.Nonnull;
+
+import com.gtnewhorizon.gtnhmixins.builders.IMixins;
+import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
+
+public enum Mixins implements IMixins {
+
+    GUIDISCONNECTED(new MixinBuilder().setPhase(Phase.EARLY)
+        .addClientMixins("MixinGuiDisconnected")),
+
+    GUICONNECTING(new MixinBuilder().setPhase(Phase.EARLY)
+        .addClientMixins("MixinGuiConnecting"));
+
+    private final MixinBuilder builder;
+
+    Mixins(MixinBuilder builder) {
+        this.builder = builder;
+    }
+
+    @Nonnull
+    @Override
+    public MixinBuilder getBuilder() {
+        return builder;
+    }
+}
