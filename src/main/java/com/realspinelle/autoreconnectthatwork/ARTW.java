@@ -33,7 +33,8 @@ public class ARTW {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
-        if (event.getSide().isClient()) {
+        if (event.getSide()
+            .isClient()) {
             FMLCommonHandler.instance()
                 .bus()
                 .register(new ReconnectTicker());
